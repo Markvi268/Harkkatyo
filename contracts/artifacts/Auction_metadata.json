@@ -1,0 +1,112 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "announcements",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_reward",
+						"type": "uint256"
+					}
+				],
+				"name": "exchangeCommission",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "reward",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/auction.sol": "Auction"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/auction.sol": {
+			"keccak256": "0x858badd8eaa0e91fb8ee82f762f7d0a3ba8a269f78970c7388e1909800dbd089",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://445ddacfa13f4c1bf34fc4e4f729c6fdb8ee938540518948f4a7868da790d605",
+				"dweb:/ipfs/QmeiV797cJ3W19u3BKqxGVRQxpZ71Ha9SaV5t3747Z9xM6"
+			]
+		},
+		"contracts/salesannouncement.sol": {
+			"keccak256": "0xbab19325d03adcbe08a0bbd98cb99d2d0caa61bb0380ffcdc8fad9e58ac705b8",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://6e926fd07ea403404ac9076b9264fb8ce40b6dbf92dee2f8ad029227262976c1",
+				"dweb:/ipfs/Qmf8mAacC36cRpX7sBS1rnSrAm4jAKCFNDmqKMwDCThsrh"
+			]
+		},
+		"hardhat/console.sol": {
+			"keccak256": "0x60b0215121bf25612a6739fb2f1ec35f31ee82e4a8216c032c8243d904ab3aa9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6e29880d33dd479bb046ba306993d26ccb779a4b1d94a046cb3567f22948bb4d",
+				"dweb:/ipfs/QmfTY1qzPt5C63Wc7y6JqfZr5899NRvXYdCpyLzR5FXQic"
+			]
+		}
+	},
+	"version": 1
+}
