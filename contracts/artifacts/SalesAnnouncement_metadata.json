@@ -6,47 +6,6 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "address payable",
-						"name": "_dealer",
-						"type": "address"
-					},
-					{
-						"internalType": "address payable",
-						"name": "_person",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "_title",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_description",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_price",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_endtime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_reward",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -157,6 +116,49 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "_dealer",
+						"type": "address"
+					},
+					{
+						"internalType": "address payable",
+						"name": "_person",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_endtime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_reward",
+						"type": "uint256"
+					}
+				],
+				"name": "newNotification",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "newPrice",
 				"outputs": [
@@ -215,6 +217,30 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newoffer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "offer",
+						"type": "uint256"
+					}
+				],
+				"name": "setYell",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "title",
 				"outputs": [
@@ -225,24 +251,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address payable",
-						"name": "_owner",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "offer",
-						"type": "uint256"
-					}
-				],
-				"name": "yell",
-				"outputs": [],
-				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -374,11 +382,11 @@
 			]
 		},
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0xafd99d2a32ca632136e2168231ea9594a98b9d93b6be304d4edb2de15911a04b",
+			"keccak256": "0x60cdaf86b50b3eb6a8d3ad0125204169bd1fbddb1c4f0ca0c03764321e434385",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://4ed1606e9206ccfc891f8bf64fb6586e11e7fb11a816f139638f880fb0f1f113",
-				"dweb:/ipfs/QmZkCxaqEjNhyZkyLKzhHdWsRbse6QBUxmXBBpjaPf2Sto"
+				"bzz-raw://6593edff3e8c9de6ce80c087cdc171314cf30b3b30763af5abbd757b3878a589",
+				"dweb:/ipfs/QmXreK2waVShpDTM52HLLZvKYtCKBy2NTcN7pyHH4xvTjR"
 			]
 		}
 	},
