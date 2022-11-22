@@ -1,0 +1,2 @@
+# harkkatyo
+lohkoketjuohjelmointi
