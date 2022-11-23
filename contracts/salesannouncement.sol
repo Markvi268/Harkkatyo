@@ -3,71 +3,67 @@ pragma solidity ^0.8.0;
 /* IMPORTS! */
 import "hardhat/console.sol";
 
-
-contract SalesAnnouncement{
-
-    mapping(address => uint) public huutajat;
+contract SalesAnnouncement {
     address payable public dealer; // huutokaupan omistaja
     address payable public person; // ilmoituksen jättäjä/omistaja
-    address payable highestYell;
-    address payable[] public previousBidder; // aikaisemmat tarjoajat
-    string public title; // kohteen otsikko
-    string public description; // kohteen kuvaus
-    uint public endtime; // päättymisaika
-    uint public highestPrice; // uusihinta/pohjahinta
-    uint public reward; //huutokaupan palkkio
-    uint index = 0;
+    address public previousBidder; // aikaisemmat tarjoajat
+    address public bidder;
+    string  public title; // kohteen otsikko
+    string  public description; // kohteen kuvaus
+    uint256 public endtime; // päättymisaika
+    uint256 public deposit; // pantti
+    uint256 public price; // pohjahinta
+    uint256 public newPrice; // uusihinta
+    uint256 public reward; //huutokaupan palkkio
+    uint256 public ownerpart; // omistajan osuus
+    uint256 index = 0;
 
-    constructor(address payable _dealer,address payable _person, string memory _title, string memory _description, uint _price, uint _endtime,uint _reward){
-
+    constructor(
+        address payable _dealer,
+        address payable _person,
+        string memory _title,
+        string memory _description,
+        uint256 _price,
+        uint256 _endtime,
+        uint256 _reward
+    ) {
         dealer = _dealer;
         person = _person;
         title = _title;
         description = _description;
-        highestPrice = _price;
+        price = _price;
         endtime = block.number + _endtime;
         reward = _reward;
-        console.log(endtime);
-
+        console.log(person);
     }
 
-
-    receive() external payable{
-        require(msg.value > highestPrice,"Price is higher than you offers");
-        highestPrice = msg.value;
+    receive() external payable {
+        setYell(msg.sender, msg.value);
     }
 
-    event newYell(address who,uint howMuch);
+    event newYell(address who, uint256 howMuch);
 
-    modifier OnlyPerson(){
-        console.log(msg.sender);
-        require(msg.sender == person,"You are not the submitter of the sale notice");
+    modifier OnlyPerson() {
+        require(
+            msg.sender == person,
+            "You are not the submitter of the sale notice"
+        );
         _;
     }
 
-    modifier OnlyHigherShoulter(){
-        require(msg.sender == highestYell, "You are not the higher yell");
-        _;
+    function setYell(address _newBidder, uint256 amount) public payable {
+        require(amount >= price, "You offer is too low");
+
+        uint256 comission = amount / reward;
+        ownerpart = amount - comission;
+        bidder = previousBidder;
+        previousBidder = _newBidder;
+
+        newPrice = deposit;
+        deposit = amount;
+
+        console.log(newPrice);
+
+        emit newYell(_newBidder, amount);
     }
-
-    function setYell(address payable _newoffer,uint offer)external payable{
-        previousBidder.push(payable(_newoffer));
-           
-        highestPrice = offer;
-
-        index++;
-        emit newYell(_newoffer,offer);
-        
-    }
-
-    function setFinished()OnlyPerson public{
-        require(endtime == block.number,"Not yet avaibled");
-        highestYell = previousBidder[index];
-        highestYell = person;
-
-    }
-
-
-
-
 }
