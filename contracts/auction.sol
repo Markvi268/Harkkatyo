@@ -6,13 +6,11 @@ import "hardhat/console.sol";
 
 contract Auction{
 
-    SalesAnnouncement sales = new SalesAnnouncement();
-    uint public reward; // palkkio %
-    mapping(uint => SalesAnnouncement) public announcements; // ilmoituksien osoite
+    uint private reward; // palkkio %
+    mapping(uint => SalesAnnouncement) private announcements; // ilmoituksien osoite
     address payable private owner; // huutokaupan omistaja
     uint index = 0;
         
-
 
     constructor(){
         reward = 5; // alustetaan välityspalkkio 5%:iin
@@ -20,16 +18,19 @@ contract Auction{
     }
 
     receive()external payable{
-
+        
     }
 
     fallback()external payable{
 
     }
 
-    event newSalesAd(address who);
+    event newSalesAd(address who, address addr);
     event rewardChange(uint reward);
 
+    function money() payable public{
+           
+    }
     
     modifier OnlyOwner(){
         require(msg.sender == owner,"Decline, you are not the owner");
@@ -50,16 +51,30 @@ contract Auction{
 
     function createAnotice(string memory _title, string memory _description, uint _startprice,uint _endtime )public{
 
-        sales.newNotification(owner,payable(msg.sender),_title,_description,_startprice,_endtime,reward);
+        SalesAnnouncement sales = new SalesAnnouncement(owner,payable(msg.sender),_title,_description,_startprice,_endtime,reward);
         announcements[index] = sales;
-        emit newSalesAd(msg.sender);
+        emit newSalesAd(msg.sender,address(sales));
         index++;
 
 
     }
-    function makeAshout (address _newoffer, uint amount) public {
-        sales.setYell(_newoffer, amount);
 
+    function makeAshout (uint _index) public payable {
+        SalesAnnouncement sales = announcements[_index]; // valitaan ilmoitus mitä huudetaan
+        require(msg.value >= sales.highestPrice(),"You offer is too low");
+        sales.setYell(payable(msg.sender), msg.value);
+
+    }
+
+    function getAnnouncements(uint _index) public view returns(address){
+        SalesAnnouncement sales = announcements[_index];
+        return address(sales);
+
+    }
+
+    function callFinished(uint _index) public {
+        SalesAnnouncement sales = announcements[_index];
+        sales.setFinished();
     }
 
 
