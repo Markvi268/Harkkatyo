@@ -68,7 +68,7 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
+						"internalType": "address payable",
 						"name": "_newBidder",
 						"type": "address"
 					},
@@ -85,64 +85,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "deposit",
+				"name": "getBalance",
 				"outputs": [
 					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "description",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "endtime",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "newPrice",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"internalType": "address payable",
-						"name": "",
-						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -151,38 +99,6 @@
 			{
 				"inputs": [],
 				"name": "ownerpart",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "previousBidder",
-				"outputs": [
-					{
-						"internalType": "address payable",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "price",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -211,19 +127,6 @@
 				"name": "setFinished",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "title",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -259,11 +162,11 @@
 	},
 	"sources": {
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x00d2a5b1c8022e90b26c400f70a763b673bacd08c1578065e787fc8cc4c87b5e",
+			"keccak256": "0x5425f39e1b2cd891fc72edf0b7612bc987fc2d826ccddced0a0a77d258077125",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://7dad75065315c00f6bc5fa0dbb96f176c7dc718c93556f9c9098f51bdac17cae",
-				"dweb:/ipfs/QmWePoNvdWGkk54F5itfXqQvjZgdfMJy7mvmJcEfz4a6xf"
+				"bzz-raw://7bf1c0b50c11d26c532a56542eb20c004c77514d779b93f595f6f494fbe12517",
+				"dweb:/ipfs/QmdtaCbvRCvC8onAni6DvSXTVxW2udFHU6V4D4gAFTBv5X"
 			]
 		},
 		"hardhat/console.sol": {

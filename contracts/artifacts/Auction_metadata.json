@@ -94,9 +94,9 @@
 				"name": "getAnnouncement",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "uint256",
 						"name": "",
-						"type": "address"
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -108,16 +108,11 @@
 						"internalType": "uint256",
 						"name": "_index",
 						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
 					}
 				],
 				"name": "makeAshout",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -172,19 +167,19 @@
 	},
 	"sources": {
 		"contracts/auction.sol": {
-			"keccak256": "0x68a41e2390a472acfdb27be00955e2a7fba3498863533d0c1ed6cbe4ad99d068",
+			"keccak256": "0x0497d09e737167275246dd303142da7b681e1dfd973fe18feab2d80921d51c2a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://3b9cfc6b5fb699e587fb633b62941230fe9ea6bf5741e4148d5e84c1afc082d1",
-				"dweb:/ipfs/QmXBwqxAe1c83cHUv4t16majRS1XwA7r9rxCD2Wx8oaCAA"
+				"bzz-raw://593438842097e7437882a0ec185aa84e17ead7b25d4cc1f667b5511259942b99",
+				"dweb:/ipfs/QmdD28Px2dnkP3e9Lm1FAoBGARTPgw2y5TJMLcmeoMyarx"
 			]
 		},
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x3dfd34c9c3695925137693063505bbb2f646d070567c037066a6cc2d7932481a",
+			"keccak256": "0xd0abdb535114dd31dc37856e4325deb265465d9d66cd957a172e7e0747ec9b9d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://67491052c3e70ad882ef77e82d982ea0875d7d22752eab4d501e8d92903fcda2",
-				"dweb:/ipfs/QmeoXdQLtaUQLf9CZPzpyf3iS8Jb2jE1qVseDqWx4ahsnZ"
+				"bzz-raw://4690830a8580e38bf35ab1dce8b0768dc1c1dace9e3c76d7fd5e29c761606e91",
+				"dweb:/ipfs/QmcuM24EtwoQF4UbZ1DQh3xe3wQ492LDgk1bJ4N49Riu96"
 			]
 		},
 		"hardhat/console.sol": {

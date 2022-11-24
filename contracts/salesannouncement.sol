@@ -6,16 +6,14 @@ import "hardhat/console.sol";
 
 contract SalesAnnouncement {
   //  mapping(uint256 => Auction) private announcements; // ilmoituksien osoite
-    address payable public owner; // ilmoituksen omistaja
+    address payable private owner; // ilmoituksen omistaja
     address payable private addr; // huutokaupan osoite
-    address payable bidder;
-    address payable[] public previousBidder; // aikaisemmat tarjoajat
-    string  public title; // kohteen otsikko
-    string  public description; // kohteen kuvaus
-    uint256 public endtime; // päättymisaika
-    uint256 public deposit; // pantti
-    uint256 public price; // pohjahinta
-    uint256 public newPrice; // uusihinta
+    address payable[] private previousBidders; // aikaisemmat tarjoajat
+    string  private title; // kohteen otsikko
+    string  private description; // kohteen kuvaus
+    uint256 private endtime; // päättymisaika
+    uint256 private deposit; // pantti
+    uint256 private price; // pohjahinta/uusihinta
     uint256 public reward; //huutokaupan palkkio
     uint256 public ownerpart; // omistajan osuus
     uint256 index = 0;
@@ -37,7 +35,7 @@ contract SalesAnnouncement {
     }
 
     receive() external payable {
-        Yell(msg.sender,msg.value);
+        //Yell(msg.sender,msg.value);
     }
 
     modifier Onlyowner() {
@@ -46,18 +44,52 @@ contract SalesAnnouncement {
     }
 
     modifier OnlyBlockTime(){
-        require(block.number < endtime,"Auction closed");
+        require(block.number <= endtime,"Auction closed");
         _;
     }
 
    // huudetaan tuotetta ja palauteutetaan rahat edelliselle omistajalle
-    function Yell(address _newBidder, uint256 amount) OnlyBlockTime public payable {
-        require(amount > price,"You offer is too low");
-        price = amount;
+    function Yell(address payable _newBidder,uint256 amount) OnlyBlockTime payable public {
+        require(amount > price,"Your offer is too low");
+
+        setpreviousBidders(_newBidder);
+        setNewPrice(amount);
+        if(index > 0){
+            address payable bidder = getpreviousBidders();
+            bidder.transfer(getBalance());
+        }
+
         emit newYell(_newBidder,amount);
+
     }
 
+    // funktio kaupan sinetöimiseksi
     function setFinished() OnlyBlockTime public {
         
+    }
+
+    // haetaan edellinen huutaja
+    function getpreviousBidders() private view returns(address payable){
+        uint _index = index - 1;
+        return previousBidders[_index];
+       
+    }
+
+    // asetetaan edellinen huutaja
+    function setpreviousBidders(address payable _bidder) private{
+        previousBidders.push(_bidder);
+         index++;
+    }
+
+    function getBalance()public view returns(uint){
+        return address(this).balance;
+    }
+
+    function setNewPrice(uint _newPrice)private{
+        price = _newPrice;
+    }
+
+    function getNewPrice()private view returns(uint){
+        return price;
     }
 }

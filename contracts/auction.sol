@@ -11,6 +11,8 @@ contract Auction {
     uint256 private reward; // palkkio %
     uint256 index = 0;
 
+
+    // eventit
     event newSalesAd(address who, address addr);
     event rewardChange(uint256 newReward);
 
@@ -40,9 +42,10 @@ contract Auction {
     }
 
     // tehdään tarjous tuotteesta
-    function makeAshout(uint256 _index, uint256 amount) public {
+    function makeAshout(uint256 _index) public payable{
         SalesAnnouncement sales = announcements[_index];
-        sales.Yell(msg.sender, amount);
+        payable(address(sales)).transfer(address(this).balance); // en saanu muuten toimimaan kun näin. lähetetään rahat myynti-ilmoitukseen, toimii panttina
+        sales.Yell(payable(msg.sender),msg.value);
     }
 
     // vaihdetaan välityspalkkio
@@ -58,9 +61,9 @@ contract Auction {
     }
 
     // haetaan indeksillä myynti-ilmoituksien osoite
-    function getAnnouncement(uint256 _index) public view returns(address){
+    function getAnnouncement(uint256 _index) public view returns(uint){
         SalesAnnouncement sales = announcements[_index];
-        return address(sales);
+        return sales.getBalance();
     }
 }
 
