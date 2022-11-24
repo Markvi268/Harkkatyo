@@ -5,61 +5,62 @@ import "./salesannouncement.sol";
 import "hardhat/console.sol";
 
 contract Auction {
-    uint256 private reward; // palkkio %
     mapping(uint256 => SalesAnnouncement) private announcements; // ilmoituksien osoite
-    address payable public owner; // huutokaupan omistaja
+    address payable private owner; // huutokaupan omistaja
+    address private addr; // huutokaupan osoite
+    uint256 private reward; // palkkio %
     uint256 index = 0;
 
-    constructor() {
-        reward = 5; // alustetaan välityspalkkio 5%:iin
+    event newSalesAd(address who, address addr);
+    event rewardChange(uint256 newReward);
+
+    constructor(){
         owner = payable(msg.sender);
+        addr = address(this);
+        reward = 5; // alustetaan välityspalkkio 5%:iin
     }
 
-    event newSalesAd(address who, address addr);
-    event rewardChange(uint256 reward);
+    receive() external payable{
+        // nothing yet
+    }
 
     modifier OnlyOwner() {
         require(msg.sender == owner, "Decline, you are not the owner");
         _;
     }
 
+    // luodaan uusi myynti-ilmoitus
+    function createAnotice(string memory _title,string memory _description,uint256 _startprice,uint256 _endtime)public{
+
+        SalesAnnouncement sales = new SalesAnnouncement(payable(addr),payable(msg.sender),_title,_description,_startprice,_endtime,reward);
+         announcements[index] = sales;
+        index++;
+        emit newSalesAd(msg.sender,address(sales));
+
+    }
+
+    // tehdään tarjous tuotteesta
+    function makeAshout(uint256 _index, uint256 amount) public {
+        SalesAnnouncement sales = announcements[_index];
+        sales.Yell(msg.sender, amount);
+    }
+
+    // vaihdetaan välityspalkkio
     function exchangeCommission(uint256 _reward) public OnlyOwner {
-        // vaihdetaan välityspalkkio
         reward = _reward;
         emit rewardChange(_reward);
     }
 
-    function getBalance() public view OnlyOwner returns (uint256) {
-        return address(this).balance;
+    // nostetaan ethereum sopimukselta pois
+    function raiseETH(uint amount) OnlyOwner public view returns(bool) {
+        require(amount > owner.balance,"Not enought ETH in your account");
+        return true;
     }
 
-    function createAnotice(
-        string memory _title,
-        string memory _description,
-        uint256 _startprice,
-        uint256 _endtime
-    ) public {
-        SalesAnnouncement sales = new SalesAnnouncement(
-            owner,
-            payable(msg.sender),
-            _title,
-            _description,
-            _startprice,
-            _endtime,
-            reward
-        );
-        announcements[index] = sales;
-        emit newSalesAd(msg.sender, address(sales));
-        index++;
-    }
-
-    function makeAshout(uint256 _index) public payable {
-        SalesAnnouncement sales = announcements[_index]; // valitaan ilmoitus mitä huudetaan
-        sales.setYell(msg.sender, msg.value);
-    }
-
-    function getAnnouncements(uint256 _index) public view returns (address) {
+    // haetaan indeksillä myynti-ilmoituksien osoite
+    function getAnnouncement(uint256 _index) public view returns(address){
         SalesAnnouncement sales = announcements[_index];
         return address(sales);
     }
 }
+

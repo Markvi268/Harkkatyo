@@ -35,7 +35,7 @@
 					{
 						"indexed": false,
 						"internalType": "uint256",
-						"name": "reward",
+						"name": "newReward",
 						"type": "uint256"
 					}
 				],
@@ -91,7 +91,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "getAnnouncements",
+				"name": "getAnnouncement",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -103,43 +103,45 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "getBalance",
-				"outputs": [
+				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "_index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
+				"name": "makeAshout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_index",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"name": "makeAshout",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "owner",
+				"name": "raiseETH",
 				"outputs": [
 					{
-						"internalType": "address payable",
+						"internalType": "bool",
 						"name": "",
-						"type": "address"
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -170,19 +172,19 @@
 	},
 	"sources": {
 		"contracts/auction.sol": {
-			"keccak256": "0x330971ddcfee35e8f84600f3aaf652ceddc5d6b047c68712c3aca9c4ec00363e",
+			"keccak256": "0x68a41e2390a472acfdb27be00955e2a7fba3498863533d0c1ed6cbe4ad99d068",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://fa619fc749125985305cee025b05c3d0036ef291f92bf8c4340dc4d3cdfa1e90",
-				"dweb:/ipfs/QmUYDzdgc4N6fnDt4W3VUc1e6yyAj1B4QuzEu7gxLp6HUK"
+				"bzz-raw://3b9cfc6b5fb699e587fb633b62941230fe9ea6bf5741e4148d5e84c1afc082d1",
+				"dweb:/ipfs/QmXBwqxAe1c83cHUv4t16majRS1XwA7r9rxCD2Wx8oaCAA"
 			]
 		},
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x0959cdcf092d95e3cfba2ec7f4911e8b9c3cfb7ae8ce094a7d48dd2f3e394e7e",
+			"keccak256": "0x3dfd34c9c3695925137693063505bbb2f646d070567c037066a6cc2d7932481a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://977bcd2ecf24c2a356eb7131c885254123fbdddb44e135735a5cb147452a4795",
-				"dweb:/ipfs/QmQvYGSjM7nN7EaUahHnjeEop6wGX2jc6wHZZA7s2uacVH"
+				"bzz-raw://67491052c3e70ad882ef77e82d982ea0875d7d22752eab4d501e8d92903fcda2",
+				"dweb:/ipfs/QmeoXdQLtaUQLf9CZPzpyf3iS8Jb2jE1qVseDqWx4ahsnZ"
 			]
 		},
 		"hardhat/console.sol": {

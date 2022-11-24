@@ -9,12 +9,12 @@
 				"inputs": [
 					{
 						"internalType": "address payable",
-						"name": "_dealer",
+						"name": "_addr",
 						"type": "address"
 					},
 					{
 						"internalType": "address payable",
-						"name": "_person",
+						"name": "_owner",
 						"type": "address"
 					},
 					{
@@ -29,7 +29,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "_price",
+						"name": "_startprice",
 						"type": "uint256"
 					},
 					{
@@ -66,29 +66,21 @@
 				"type": "event"
 			},
 			{
-				"inputs": [],
-				"name": "bidder",
-				"outputs": [
+				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "_newBidder",
 						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "dealer",
-				"outputs": [
+					},
 					{
-						"internalType": "address payable",
-						"name": "",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
+				"name": "Yell",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -145,20 +137,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "ownerpart",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "person",
+				"name": "owner",
 				"outputs": [
 					{
 						"internalType": "address payable",
@@ -171,10 +150,29 @@
 			},
 			{
 				"inputs": [],
+				"name": "ownerpart",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
 				"name": "previousBidder",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "address payable",
 						"name": "",
 						"type": "address"
 					}
@@ -209,21 +207,10 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_newBidder",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "setYell",
+				"inputs": [],
+				"name": "setFinished",
 				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -272,11 +259,11 @@
 	},
 	"sources": {
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x639c7010c943675ef0c38ab294757feaf0bcc78b5217d37d093b34eb8987649e",
+			"keccak256": "0x00d2a5b1c8022e90b26c400f70a763b673bacd08c1578065e787fc8cc4c87b5e",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://77fd39106b7c90ea8632f305acaba9ffee2b8009e0a4fa2fd699bcec5fb70f36",
-				"dweb:/ipfs/QmSrWMADhH22QsDU36ze27HvMiHcMCkRZSvvcCbVThHPXr"
+				"bzz-raw://7dad75065315c00f6bc5fa0dbb96f176c7dc718c93556f9c9098f51bdac17cae",
+				"dweb:/ipfs/QmWePoNvdWGkk54F5itfXqQvjZgdfMJy7mvmJcEfz4a6xf"
 			]
 		},
 		"hardhat/console.sol": {
