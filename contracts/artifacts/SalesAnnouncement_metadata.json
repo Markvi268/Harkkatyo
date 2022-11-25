@@ -66,6 +66,25 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newowner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "sold",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address payable",
@@ -79,6 +98,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "checkAddress",
+						"type": "address"
+					}
+				],
+				"name": "checkOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "getBalance",
 				"outputs": [
@@ -89,39 +121,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "ownerpart",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "reward",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "setFinished",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -157,11 +156,11 @@
 	},
 	"sources": {
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x349e732c96dc90175031e3339ca259fb6b8b7e5710a4c93d82f8c4b5a622768c",
+			"keccak256": "0x1beb7c567d563def414e20fa3e610503049afe4e623d6a33056cca727485ebb1",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://f98e83c9d2cf7d1a7526e782ba062293ce6b75488f18434e1e92036cd62ab75f",
-				"dweb:/ipfs/QmfMv4tEDiy9JDegeJkRgWBfCidq2xLdUABrtxpgM5qPvd"
+				"bzz-raw://af6af1b42d8972cecbbb0db4a2e832b1b016025a35bdf8d0f94ef7b601d14bcb",
+				"dweb:/ipfs/QmSKFRpv9YQGCSXswP6XrYcPc19orXCybvfWCoY4qiWhny"
 			]
 		},
 		"hardhat/console.sol": {

@@ -10,6 +10,7 @@ contract Auction {
     address payable private addr; // huutokaupan osoite
     uint256 private reward; // palkkio %
     uint256 index = 0;
+    uint mappingindex = 0;
 
 
     // eventit
@@ -33,16 +34,17 @@ contract Auction {
 
     // luodaan uusi myynti-ilmoitus
     function createAnotice(string memory _title,string memory _description,uint256 _startprice,uint256 _endtime)public{
-
         SalesAnnouncement sales = new SalesAnnouncement(payable(addr),payable(msg.sender),_title,_description,_startprice,_endtime,reward);
          announcements[index] = sales;
         index++;
+        mappingindex++;
         emit newSalesAd(msg.sender,address(sales));
 
     }
 
     // tehdään tarjous tuotteesta
     function makeAshout(uint256 _index) payable public{
+        require(mappingindex > 0,"Nothing yet"); // varmistaan että ei huudeta tyhjää
         SalesAnnouncement sales = announcements[_index];
       //  payable(address(sales)).transfer(address(this).balance); // en saanu muuten toimimaan kun näin. lähetetään rahat myynti-ilmoitukseen, toimii panttina
         sales.Yell{value:msg.value}(payable(msg.sender));
@@ -62,7 +64,7 @@ contract Auction {
         return true;
     }
 
-    function getBalance() public view returns(uint){
+    function getBalance() OnlyOwner public view returns(uint){
         return address(this).balance;
     }
 
@@ -70,6 +72,11 @@ contract Auction {
     function getAnnouncement(uint256 _index) public view returns(uint){
         SalesAnnouncement sales = announcements[_index];
         return sales.getBalance();
+    }
+
+    function getFinish(address isOwner,uint _index) public{
+        SalesAnnouncement sales = announcements[_index];
+        sales.checkOwner(isOwner);
     }
 }
 
