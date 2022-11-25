@@ -7,7 +7,7 @@ import "hardhat/console.sol";
 contract Auction {
     mapping(uint256 => SalesAnnouncement) private announcements; // ilmoituksien osoite
     address payable private owner; // huutokaupan omistaja
-    address private addr; // huutokaupan osoite
+    address payable private addr; // huutokaupan osoite
     uint256 private reward; // palkkio %
     uint256 index = 0;
 
@@ -18,7 +18,7 @@ contract Auction {
 
     constructor(){
         owner = payable(msg.sender);
-        addr = address(this);
+        addr = payable(address(this));
         reward = 5; // alustetaan välityspalkkio 5%:iin
     }
 
@@ -42,10 +42,11 @@ contract Auction {
     }
 
     // tehdään tarjous tuotteesta
-    function makeAshout(uint256 _index) public payable{
+    function makeAshout(uint256 _index) payable public{
         SalesAnnouncement sales = announcements[_index];
-        payable(address(sales)).transfer(address(this).balance); // en saanu muuten toimimaan kun näin. lähetetään rahat myynti-ilmoitukseen, toimii panttina
-        sales.Yell(payable(msg.sender),msg.value);
+      //  payable(address(sales)).transfer(address(this).balance); // en saanu muuten toimimaan kun näin. lähetetään rahat myynti-ilmoitukseen, toimii panttina
+        sales.Yell{value:msg.value}(payable(msg.sender));
+        // sales.Yell{value: msg.value}(payable(msg.sender));
     }
 
     // vaihdetaan välityspalkkio
@@ -55,9 +56,14 @@ contract Auction {
     }
 
     // nostetaan ethereum sopimukselta pois
-    function raiseETH(uint amount) OnlyOwner public view returns(bool) {
-        require(amount > owner.balance,"Not enought ETH in your account");
+    function raiseETH() OnlyOwner public returns(bool) {
+        require(getBalance() > 0,"The contract has no ethereum");
+        owner.transfer(getBalance());
         return true;
+    }
+
+    function getBalance() public view returns(uint){
+        return address(this).balance;
     }
 
     // haetaan indeksillä myynti-ilmoituksien osoite

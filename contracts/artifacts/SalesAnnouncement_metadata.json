@@ -71,11 +71,6 @@
 						"internalType": "address payable",
 						"name": "_newBidder",
 						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
 					}
 				],
 				"name": "Yell",
@@ -162,11 +157,11 @@
 	},
 	"sources": {
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x5425f39e1b2cd891fc72edf0b7612bc987fc2d826ccddced0a0a77d258077125",
+			"keccak256": "0x349e732c96dc90175031e3339ca259fb6b8b7e5710a4c93d82f8c4b5a622768c",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://7bf1c0b50c11d26c532a56542eb20c004c77514d779b93f595f6f494fbe12517",
-				"dweb:/ipfs/QmdtaCbvRCvC8onAni6DvSXTVxW2udFHU6V4D4gAFTBv5X"
+				"bzz-raw://f98e83c9d2cf7d1a7526e782ba062293ce6b75488f18434e1e92036cd62ab75f",
+				"dweb:/ipfs/QmfMv4tEDiy9JDegeJkRgWBfCidq2xLdUABrtxpgM5qPvd"
 			]
 		},
 		"hardhat/console.sol": {

@@ -36,6 +36,7 @@ contract SalesAnnouncement {
 
     receive() external payable {
         //Yell(msg.sender,msg.value);
+        console.log("receice: ", msg.value);
     }
 
     modifier Onlyowner() {
@@ -49,17 +50,19 @@ contract SalesAnnouncement {
     }
 
    // huudetaan tuotetta ja palauteutetaan rahat edelliselle omistajalle
-    function Yell(address payable _newBidder,uint256 amount) OnlyBlockTime payable public {
-        require(amount > price,"Your offer is too low");
-
+    function Yell(address payable _newBidder) OnlyBlockTime payable public {
+      //  require(msg.value > price,"Your offer is too low");
+        console.log("msg.value: ", msg.value);
+       // payable(address(this)).transfer(msg.value);
         setpreviousBidders(_newBidder);
-        setNewPrice(amount);
+        setNewPrice(msg.value);
         if(index > 0){
-            address payable bidder = getpreviousBidders();
-            bidder.transfer(getBalance());
+          //  address payable bidder = getpreviousBidders();
+           // bidder.transfer(getBalance());
         }
 
-        emit newYell(_newBidder,amount);
+        emit newYell(msg.sender,msg.value);
+       // index++;
 
     }
 
