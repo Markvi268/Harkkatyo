@@ -1,24 +1,24 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.15;
 /* IMPORTS! */
-//import "./auction.sol";
 import "hardhat/console.sol";
 
 contract SalesAnnouncement {
     address payable private owner; // ilmoituksen omistaja
     address payable private addr; // huutokaupan osoite
-    address payable private previousBidder; // aikaisempi tarjoaja
+    address payable public previousBidder; // aikaisempi tarjoaja
     address private caller; // apu funktion käytössä oleva, jolla saadaan tietää omistaja tai korkein huutaja
     string  private title; // kohteen otsikko
     string  private description; // kohteen kuvaus
     uint256 private endtime; // päättymisaika
-    uint256 private deposit; // pantti
-    uint256 private price; // pohjahinta/uusihinta
+    uint256 public deposit; // pantti
+    uint256 public price; // pohjahinta/uusihinta
     uint256 private reward; //huutokaupan palkkio
-    uint256 counter = 0;
 
+    // eventit
     event newYell(address who, uint256 howMuch);
     event sold(address newowner, uint256 newPrice);
+    event receivePayales(address PayToReceive,uint offering);
 
 
     constructor(address payable _addr,address payable _owner,string memory _title,string memory _description,uint256 _startprice,uint256 _endtime, uint _reward) {
@@ -29,16 +29,19 @@ contract SalesAnnouncement {
         price = _startprice;
         endtime = block.number + _endtime;
         reward = _reward;
-        console.log("omistaja: ",owner," huutokaupan omistaja: ", addr);
 
     }
-
+    // ei jostain syystä toimi
     receive() external payable {
-        Yell(payable(msg.sender));
+      previousBidder = payable(msg.sender);
+      price = msg.value;
+      deposit = price;
+      emit receivePayales(msg.sender,msg.value);
+      
     }
 
     modifier Onlyowner() {
-        require(caller == owner || caller == previousBidder,"You are not the submitter of the sale notice");
+        require(caller == owner || caller == previousBidder,"You are not the sender of the sale notice or the highest bidder");
         _;
     }
 
@@ -52,10 +55,14 @@ contract SalesAnnouncement {
         _;
     }
 
+    function test() public view{
+        console.log("receive kutsuttu");
+    }
+
    // huudetaan tuotetta ja palauteutetaan rahat edelliselle omistajalle
     function Yell(address payable _newBidder) OnlyBlockTime payable public {
         require(msg.value > price,"Your offer is too low");
-        if(counter > 0){
+        if(previousBidder != address(0)){
             previousBidder.transfer(deposit);
             previousBidder = _newBidder;
             deposit = msg.value;
@@ -68,7 +75,6 @@ contract SalesAnnouncement {
         }
 
         emit newYell(_newBidder,msg.value);
-        counter++;
 
     }
 
@@ -81,6 +87,7 @@ contract SalesAnnouncement {
 
     // funktio kaupan sinetöimiseksi
     function setFinished() Onlyowner OnlyBlockTimeIsDone private returns(bool) {
+        require(previousBidder == address(0), "No one shouted the product");
         uint comission = (getBalance() / 100) * reward;
         uint ownerpart = getBalance() - comission;
         owner.transfer(ownerpart);

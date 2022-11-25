@@ -94,9 +94,9 @@
 				"name": "getAnnouncement",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -141,7 +141,27 @@
 						"type": "uint256"
 					}
 				],
+				"name": "laheta",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
 				"name": "makeAshout",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maksa",
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
@@ -192,19 +212,19 @@
 	},
 	"sources": {
 		"contracts/auction.sol": {
-			"keccak256": "0xfb8130e32f20ecb401dbda105122443ee9a9c524a09aedbdd76477831fbddabc",
+			"keccak256": "0x52d7a8d1b8c7aafc42657bf8ae92353e21fd9a12d12a9164d99abe0cf2933687",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://dd0f223423d95099d82f3c5b7f876d6b2531fe87e6c422968a3fc53c64b5a299",
-				"dweb:/ipfs/Qme4iHMgxLkEpD8ymSWwVBRUyNv2FaWXS1otrWMm6Mko7q"
+				"bzz-raw://93a11e9a3e9ed00aa6270bf60d55cceae55f5bb10483fb0420ebce2dde942aa4",
+				"dweb:/ipfs/QmbXBibkXUyyU6JcTAX1NVDHk5i7XkJTg5gpvTNkFibRm1"
 			]
 		},
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x1beb7c567d563def414e20fa3e610503049afe4e623d6a33056cca727485ebb1",
+			"keccak256": "0x202921cb0e90e8272669909e2e10f25c5d4db36baf95d8f34d633178249ac3c8",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://af6af1b42d8972cecbbb0db4a2e832b1b016025a35bdf8d0f94ef7b601d14bcb",
-				"dweb:/ipfs/QmSKFRpv9YQGCSXswP6XrYcPc19orXCybvfWCoY4qiWhny"
+				"bzz-raw://d88b42a97f348d0aad36004f079108b10215e35fd797ab7cb9a6a7765156ad18",
+				"dweb:/ipfs/QmcgPKCfbcrwv887v5U29Q5GUzDqbbjuNMjvxxPFTDjekr"
 			]
 		},
 		"hardhat/console.sol": {

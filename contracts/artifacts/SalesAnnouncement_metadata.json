@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.8.17+commit.8df45f5f"
 	},
 	"language": "Solidity",
 	"output": {
@@ -71,6 +71,25 @@
 					{
 						"indexed": false,
 						"internalType": "address",
+						"name": "PayToReceive",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "offering",
+						"type": "uint256"
+					}
+				],
+				"name": "receivePayales",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
 						"name": "newowner",
 						"type": "address"
 					},
@@ -112,6 +131,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "deposit",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getBalance",
 				"outputs": [
 					{
@@ -120,6 +152,39 @@
 						"type": "uint256"
 					}
 				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "previousBidder",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "price",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "test",
+				"outputs": [],
 				"stateMutability": "view",
 				"type": "function"
 			},
@@ -156,11 +221,11 @@
 	},
 	"sources": {
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x1beb7c567d563def414e20fa3e610503049afe4e623d6a33056cca727485ebb1",
+			"keccak256": "0x5bf97f0e96d0c21cc1e93b1b8ce1270a318f735479819ffd578661825dd7b309",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://af6af1b42d8972cecbbb0db4a2e832b1b016025a35bdf8d0f94ef7b601d14bcb",
-				"dweb:/ipfs/QmSKFRpv9YQGCSXswP6XrYcPc19orXCybvfWCoY4qiWhny"
+				"bzz-raw://0f5fd2c2860b1eca9a95385ec31e0ac6f29ce17224ffe9020bf04625f6ad3a61",
+				"dweb:/ipfs/QmQTg6xVBAyvTzByS696a5XvQ182S8vXxAxWJuFsj3xe8h"
 			]
 		},
 		"hardhat/console.sol": {
