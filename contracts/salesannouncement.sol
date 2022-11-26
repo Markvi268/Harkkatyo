@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.15;
 /* IMPORTS! */
-import "hardhat/console.sol";
 
 contract SalesAnnouncement {
     address payable private owner; // ilmoituksen omistaja
@@ -86,7 +85,6 @@ contract SalesAnnouncement {
         uint balance = getBalance();
         uint comission = balance * reward / 100;
         uint ownerpart = balance - comission;
-        console.log(comission);
         owner.transfer(ownerpart);
         payable(addr).transfer(comission);
         owner = previousBidder;

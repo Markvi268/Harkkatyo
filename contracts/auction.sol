@@ -2,7 +2,6 @@
 pragma solidity ^0.8.15;
 /* IMPORTS! */
 import "./salesannouncement.sol";
-import "hardhat/console.sol";
 
 contract Auction {
     mapping(uint256 => SalesAnnouncement) private announcements; // ilmoituksien osoite
