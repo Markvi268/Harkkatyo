@@ -23,21 +23,12 @@ contract Auction {
     }
 
     receive() external payable{
-        // nothing yet
+        // tässä tapauksessa ei vaadittu logiikkaa
     }
 
     modifier OnlyOwner() {
         require(msg.sender == owner, "Decline, you are not the owner");
         _;
-    }
-    // only for testing
-    function maksa () public payable{
-       
-    }
-    function laheta(uint _index) public payable{
-         SalesAnnouncement sales = announcements[_index];
-        payable(address(sales)).transfer(getBalance());
-
     }
 
     // luodaan uusi myynti-ilmoitus
@@ -51,14 +42,17 @@ contract Auction {
 
     // tehdään tarjous tuotteesta
     function makeAshout(uint256 _index) payable public{
+        require(index > 0 && _index <= (index - 1),"There is no sale announcement");
         SalesAnnouncement sales = announcements[_index];
         sales.Yell{value:msg.value}(payable(msg.sender));
     }
 
     // vaihdetaan välityspalkkio
-    function exchangeCommission(uint256 _reward) public OnlyOwner {
+    function exchangeCommission(uint256 _reward) OnlyOwner public returns(bool) {
+        require(_reward <= 25,"The maximum amount of the reward is 25%");
         reward = _reward;
         emit rewardChange(_reward);
+        return true;
     }
 
     // nostetaan ethereum sopimukselta pois

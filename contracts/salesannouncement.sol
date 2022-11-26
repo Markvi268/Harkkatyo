@@ -6,13 +6,13 @@ import "hardhat/console.sol";
 contract SalesAnnouncement {
     address payable private owner; // ilmoituksen omistaja
     address payable private addr; // huutokaupan osoite
-    address payable public previousBidder; // aikaisempi tarjoaja
+    address payable private previousBidder; // aikaisempi tarjoaja
     address private caller; // apu funktion käytössä oleva, jolla saadaan tietää omistaja tai korkein huutaja
     string  private title; // kohteen otsikko
     string  private description; // kohteen kuvaus
     uint256 private endtime; // päättymisaika
-    uint256 public deposit; // pantti
-    uint256 public price; // pohjahinta/uusihinta
+    uint256 private deposit; // pantti
+    uint256 private price; // pohjahinta/uusihinta
     uint256 private reward; //huutokaupan palkkio
 
     // eventit
@@ -31,13 +31,11 @@ contract SalesAnnouncement {
         reward = _reward;
 
     }
-    // ei jostain syystä toimi
+
+    // sopimukselle rahan siirto luokitellaan huudoksi
     receive() external payable {
-      previousBidder = payable(msg.sender);
-      price = msg.value;
-      deposit = price;
+      Yell(payable(msg.sender));
       emit receivePayales(msg.sender,msg.value);
-      
     }
 
     modifier Onlyowner() {
@@ -55,12 +53,8 @@ contract SalesAnnouncement {
         _;
     }
 
-    function test() public view{
-        console.log("receive kutsuttu");
-    }
-
    // huudetaan tuotetta ja palauteutetaan rahat edelliselle omistajalle
-    function Yell(address payable _newBidder) OnlyBlockTime payable public {
+    function Yell(address payable _newBidder) OnlyBlockTime  payable public returns (bool) {
         require(msg.value > price,"Your offer is too low");
         if(previousBidder != address(0)){
             previousBidder.transfer(deposit);
@@ -75,19 +69,20 @@ contract SalesAnnouncement {
         }
 
         emit newYell(_newBidder,msg.value);
-
+        return true;
     }
 
     // apu funktio kaupan sinetöimiseksi. en osannut kutsua suoraan niin tein tämmösen. toimii aikaliki samallalailla
-    function checkOwner(address checkAddress) public{
+    function checkOwner(address checkAddress) public returns(bool){
         caller = checkAddress;
         setFinished();
+        return true;
 
     }
 
     // funktio kaupan sinetöimiseksi
     function setFinished() Onlyowner OnlyBlockTimeIsDone private returns(bool) {
-        require(previousBidder == address(0), "No one shouted the product");
+        require(previousBidder != address(0x0), "No one shouted the product");
         uint comission = (getBalance() / 100) * reward;
         uint ownerpart = getBalance() - comission;
         owner.transfer(ownerpart);
@@ -96,7 +91,6 @@ contract SalesAnnouncement {
         emit sold(previousBidder, deposit);
         return true;
 
-        
     }
 
     // haetaan sopimuksen varallisuus

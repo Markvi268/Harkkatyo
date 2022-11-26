@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.8.17+commit.8df45f5f"
 	},
 	"language": "Solidity",
 	"output": {
@@ -45,6 +45,24 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "isOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "completeAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "_title",
 						"type": "string"
@@ -79,7 +97,13 @@
 					}
 				],
 				"name": "exchangeCommission",
-				"outputs": [],
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -118,50 +142,12 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "isOwner",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_index",
-						"type": "uint256"
-					}
-				],
-				"name": "getFinish",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_index",
-						"type": "uint256"
-					}
-				],
-				"name": "laheta",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "uint256",
 						"name": "_index",
 						"type": "uint256"
 					}
 				],
 				"name": "makeAshout",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "maksa",
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
@@ -212,19 +198,19 @@
 	},
 	"sources": {
 		"contracts/auction.sol": {
-			"keccak256": "0x52d7a8d1b8c7aafc42657bf8ae92353e21fd9a12d12a9164d99abe0cf2933687",
+			"keccak256": "0x3787a62fe4ede8e2fdc77274ded1590d28d688f838c65318d863341439aa134c",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://93a11e9a3e9ed00aa6270bf60d55cceae55f5bb10483fb0420ebce2dde942aa4",
-				"dweb:/ipfs/QmbXBibkXUyyU6JcTAX1NVDHk5i7XkJTg5gpvTNkFibRm1"
+				"bzz-raw://b0dab27a4b27294a1b6a5c7791f21f2cc9c6f8e29fcc6b13d8cba99eb41d3750",
+				"dweb:/ipfs/QmZUa9qHud6BduBsbHUedHy5T6UUdGXWNafkcPafjEbXQL"
 			]
 		},
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x202921cb0e90e8272669909e2e10f25c5d4db36baf95d8f34d633178249ac3c8",
+			"keccak256": "0x2e7dc6c970ca25dd5f6039c5b4c175ab9cf4753e275b7cd92b83ff9108e25d49",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d88b42a97f348d0aad36004f079108b10215e35fd797ab7cb9a6a7765156ad18",
-				"dweb:/ipfs/QmcgPKCfbcrwv887v5U29Q5GUzDqbbjuNMjvxxPFTDjekr"
+				"bzz-raw://84758565a38d2cfe03d6b5cdd829f60a6dc1d648f78168b638977b0d7ea52246",
+				"dweb:/ipfs/QmQBtfvsXsJ1fmvxfrENpoTTp6KXvHZT1qYtgzsz7cyJnL"
 			]
 		},
 		"hardhat/console.sol": {

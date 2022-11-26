@@ -112,7 +112,13 @@
 					}
 				],
 				"name": "Yell",
-				"outputs": [],
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
 				"stateMutability": "payable",
 				"type": "function"
 			},
@@ -125,21 +131,14 @@
 					}
 				],
 				"name": "checkOwner",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "deposit",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "bool",
 						"name": "",
-						"type": "uint256"
+						"type": "bool"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -152,39 +151,6 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "previousBidder",
-				"outputs": [
-					{
-						"internalType": "address payable",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "price",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "test",
-				"outputs": [],
 				"stateMutability": "view",
 				"type": "function"
 			},
@@ -221,11 +187,11 @@
 	},
 	"sources": {
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x5bf97f0e96d0c21cc1e93b1b8ce1270a318f735479819ffd578661825dd7b309",
+			"keccak256": "0x2e7dc6c970ca25dd5f6039c5b4c175ab9cf4753e275b7cd92b83ff9108e25d49",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://0f5fd2c2860b1eca9a95385ec31e0ac6f29ce17224ffe9020bf04625f6ad3a61",
-				"dweb:/ipfs/QmQTg6xVBAyvTzByS696a5XvQ182S8vXxAxWJuFsj3xe8h"
+				"bzz-raw://84758565a38d2cfe03d6b5cdd829f60a6dc1d648f78168b638977b0d7ea52246",
+				"dweb:/ipfs/QmQBtfvsXsJ1fmvxfrENpoTTp6KXvHZT1qYtgzsz7cyJnL"
 			]
 		},
 		"hardhat/console.sol": {
