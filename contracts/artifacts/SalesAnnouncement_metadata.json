@@ -187,11 +187,11 @@
 	},
 	"sources": {
 		"contracts/salesannouncement.sol": {
-			"keccak256": "0x2e7dc6c970ca25dd5f6039c5b4c175ab9cf4753e275b7cd92b83ff9108e25d49",
+			"keccak256": "0x23cfb8c4455ddf72e617569dbaca0a44bec6d3f1f5e0cf4feedfea14bcb0272d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://84758565a38d2cfe03d6b5cdd829f60a6dc1d648f78168b638977b0d7ea52246",
-				"dweb:/ipfs/QmQBtfvsXsJ1fmvxfrENpoTTp6KXvHZT1qYtgzsz7cyJnL"
+				"bzz-raw://ec7ffc668ee518b60b7124c62dc5fc75c441a321068a350fb989aa61182aa283",
+				"dweb:/ipfs/QmQk96WVEzSqSuZbxcw1cBFSfdHqozndwDvB5dHXpxbCAA"
 			]
 		},
 		"hardhat/console.sol": {

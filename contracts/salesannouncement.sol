@@ -83,8 +83,10 @@ contract SalesAnnouncement {
     // funktio kaupan sinetöimiseksi
     function setFinished() Onlyowner OnlyBlockTimeIsDone private returns(bool) {
         require(previousBidder != address(0x0), "No one shouted the product");
-        uint comission = (getBalance() / 100) * reward;
-        uint ownerpart = getBalance() - comission;
+        uint balance = getBalance();
+        uint comission = balance * reward / 100;
+        uint ownerpart = balance - comission;
+        console.log(comission);
         owner.transfer(ownerpart);
         payable(addr).transfer(comission);
         owner = previousBidder;
