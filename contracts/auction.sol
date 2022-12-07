@@ -43,7 +43,7 @@ contract Auction {
     function makeAshout(uint256 _index) payable public{
         require(index > 0 && _index <= (index - 1),"There is no sale announcement");
         SalesAnnouncement sales = announcements[_index];
-        sales.Yell{value:msg.value}(payable(msg.sender));
+        sales.Yell{value:msg.value}(payable(msg.sender)); // https://ethereum.stackexchange.com/questions/42062/how-do-you-send-ether-to-another-contracts-payable-function
     }
 
     // vaihdetaan välityspalkkio
